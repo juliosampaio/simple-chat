@@ -1,0 +1,28 @@
+<style>
+    :host {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+
+    .wrapper app-sidebar {
+        flex: 0 0 35%;
+    }
+
+    .wrapper app-chat {
+        flex: 0 0 65%;
+    }
+</style>
+<div class="wrapper">
+    <app-sidebar>
+        <app-sidebar-header slot="header"></app-sidebar-header>
+        <app-chat-list chats="x" slot="content"></app-chat-list>
+    </app-sidebar>
+    <app-chat></app-chat>
+</div>

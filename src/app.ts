@@ -1,6 +1,10 @@
 import { IBaseComponent } from './components/base/base.component';
 import { MessageComponent } from './components/message/message.component';
 import { AbstractComponent } from './components/base/abstract.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
+import { ChatListComponent } from './components/layout/chat-list/chat-list.component';
+import { ChatPreviewComponent } from './components/layout/chat/chat-preview.component';
 
 interface ICustomComponent {
   component: new () => IBaseComponent;
@@ -8,7 +12,13 @@ interface ICustomComponent {
 }
 
 export class App {
-  private customComponents: Array<ICustomComponent> = [{ component: MessageComponent, tag: 'message' }];
+  private customComponents: Array<ICustomComponent> = [
+    { component: MessageComponent, tag: 'message' },
+    { component: LayoutComponent, tag: 'layout' },
+    { component: SidebarComponent, tag: 'sidebar' },
+    { component: ChatListComponent, tag: 'chat-list' },
+    { component: ChatPreviewComponent, tag: 'chat-preview' },
+  ];
 
   constructor(private namespace: string) {}
 
