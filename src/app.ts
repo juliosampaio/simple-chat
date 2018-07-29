@@ -7,7 +7,7 @@ interface ICustomComponent {
   tag: string;
 }
 
-export class App<T extends AbstractComponent> {
+export class App {
   private customComponents: Array<ICustomComponent> = [{ component: MessageComponent, tag: 'message' }];
 
   constructor(private namespace: string) {}
