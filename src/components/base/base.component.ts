@@ -1,3 +1,3 @@
 export interface IBaseComponent {
-  define(): void;
+  getTemplate(): string;
 }

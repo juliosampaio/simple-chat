@@ -1,3 +1,4 @@
-import { Shell } from './components/shell/Shell';
+import { App } from './app';
 
-(() => console.log('wha a funck', Shell))();
+const appInstance = new App('app');
+appInstance.defineComponents();

@@ -12,6 +12,11 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.template.html$/,
+        exclude: /node_modules/,
+        use: { loader: 'html-loader' },
+      },
     ],
   },
   resolve: {
