@@ -1,6 +1,7 @@
 import { AbstractComponent } from '../base/abstract.component';
 import MessageTemplate from './message.template.html';
-
+import { updates } from '../../decorators/updates';
+import 'reflect-metadata';
 export class MessageComponent extends AbstractComponent {
   static get observedAttributes() {
     return ['text'];
@@ -14,7 +15,9 @@ export class MessageComponent extends AbstractComponent {
   getTemplate(): string {
     return MessageTemplate;
   }
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-    this.shadowRoot.querySelector('p').innerHTML = newValue;
+
+  @updates('text')
+  updateText(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
+    shadowRoot.querySelector('p').innerHTML = newValue;
   }
 }
