@@ -6,17 +6,41 @@
     }
 
     .avatar {
-        border: 1px solid red;
+        display: flex;
         flex: 0 0 20%;
+        padding: 0 15px 0 13px;
+        align-items: center;
+        justify-content: center;
     }
 
     .content {
         flex: 0 0 80%;
+        margin-top: 15px;
         border-bottom: 1px solid #4b4b4b;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .title {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    .preview {
+        font-size: 14px;
+        margin-top: 2px;
+        color: rgba(0, 0, 0, 0.6);
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 </style>
 <div class="wrapper">
-    <div class="avatar"></div>
+    <div class="avatar">
+        <app-avatar img-src="" alt=""></app-avatar>
+    </div>
     <div class="content">
         <div class="title"></div>
         <div class="preview"></div>

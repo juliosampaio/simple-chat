@@ -1,14 +1,15 @@
 import { AbstractComponent } from '../../base/abstract.component';
 import ChatPreviewComponentTemplate from './chat-preview.template.html';
 import { updates } from '../../../decorators/updates';
+import { AvatarComponent } from '../../avatar/avatar.component';
 
 export class ChatPreviewComponent extends AbstractComponent {
   get avatarUrl(): string {
-    return this.getAttribute('avatarUrl');
+    return this.getAttribute('avatar-url');
   }
 
   set avatarUrl(avatarUrl: string) {
-    this.setAttribute('avatarUrl', avatarUrl);
+    this.setAttribute('avatar-url', avatarUrl);
   }
 
   get preview(): string {
@@ -28,17 +29,17 @@ export class ChatPreviewComponent extends AbstractComponent {
   }
 
   static get observedAttributes() {
-    return ['avatarUrl', 'preview', 'title'];
+    return ['avatar-url', 'preview', 'title'];
   }
 
   getTemplate(): string {
     return ChatPreviewComponentTemplate;
   }
 
-  @updates('avatarUrl')
+  @updates('avatar-url')
   updateAvatarUrl(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
-    // shadowRoot.querySelector('.title').innerHTML = newValue;
-    console.log('updateAvatarUrl');
+    const avatar: AvatarComponent = <AvatarComponent>shadowRoot.querySelector('.avatar').childNodes[1];
+    avatar.imgSrc = newValue;
   }
 
   @updates('title')
