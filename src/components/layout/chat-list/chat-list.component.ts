@@ -21,17 +21,20 @@ export class ChatListComponent extends AbstractComponent {
   }
 
   @updates('chats')
-  renderMessagesList(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
+  renderChatList(oldValue: Array<ChatPreviewComponent> = [], newValue: Array<ChatPreviewComponent> = [], shadowRoot: ShadowRoot) {
     const list = shadowRoot.querySelector('ul');
     list.innerHTML = '';
-    const preview = list.appendChild(document.createElement('li')).appendChild(new ChatPreviewComponent());
-    preview.title = 'Morty';
-    preview.preview = "Hey Rick, what's up?";
-    preview.avatarUrl = 'https://rickandmortyapi.com/api/character/avatar/2.jpeg';
+    (newValue || []).forEach(chat => list.appendChild(document.createElement('li').appendChild(chat)));
+    // for (let i = 0; i < 10; i++) {
+    //   const preview = list.appendChild(document.createElement('li')).appendChild(new ChatPreviewComponent());
+    //   preview.title = 'Morty';
+    //   preview.preview = "Hey Rick, what's up?";
+    //   preview.avatarUrl = 'https://rickandmortyapi.com/api/character/avatar/2.jpeg';
 
-    const preview2 = list.appendChild(document.createElement('li')).appendChild(new ChatPreviewComponent());
-    preview2.title = 'Summer';
-    preview2.preview = 'What you do? You eat our food and make gadgats.boo bye.';
-    preview2.avatarUrl = 'https://rickandmortyapi.com/api/character/avatar/3.jpeg';
+    //   const preview2 = list.appendChild(document.createElement('li')).appendChild(new ChatPreviewComponent());
+    //   preview2.title = 'Summer';
+    //   preview2.preview = 'What you do? You eat our food and make gadgats.boo bye.';
+    //   preview2.avatarUrl = 'https://rickandmortyapi.com/api/character/avatar/3.jpeg';
+    // }
   }
 }
