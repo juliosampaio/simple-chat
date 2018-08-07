@@ -18,5 +18,8 @@
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
+  },
+  "dependencies": {
+    "rxjs": "^6.2.2"
   }
 }

@@ -23,5 +23,9 @@ export abstract class AbstractComponent extends HTMLElement implements IBaseComp
     return Reflect.getMetadata('attributeChangeListeners', this);
   }
 
+  connectedCallback() {
+    this.dispatchEvent(new Event('connected'));
+  }
+
   abstract getTemplate(): string;
 }
