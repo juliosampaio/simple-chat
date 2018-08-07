@@ -2,8 +2,8 @@ import { IUser } from './IUser';
 import { IMessage } from './IMessage';
 
 export interface IChat {
-  title: string;
-  avatar: string;
-  members: Array<IUser>;
-  messages: Array<IMessage>;
+  id: string;
+  title?: string;
+  avatar?: string;
+  lastMessage?: IMessage;
 }

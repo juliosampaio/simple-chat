@@ -1,6 +1,6 @@
-import { IMessage } from '../models/IMessage';
+import { Observable } from 'rxjs'
 import { IChat } from '../models/IChat';
 
 export interface IChatService {
-  getActiveChats(): Array<IChat>;
+  getActiveChats(): Observable<IChat[]>;
 }
