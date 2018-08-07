@@ -18,9 +18,23 @@ export class ChatListComponent extends AbstractComponent {
     this.renderChatList();
   }
 
+  appendChat(chat?: ChatPreviewComponent): ChatPreviewComponent{
+    return this.
+      shadowRoot.
+      querySelector('ul')
+      .appendChild(document
+          .createElement('li')
+          .appendChild(chat || new ChatPreviewComponent())
+      )
+  }
+
+  clearChatList() {
+    this.shadowRoot.querySelector('ul').innerHTML = '';
+  }
+
   renderChatList() {
-    const list = this.shadowRoot.querySelector('ul');
-    list.innerHTML = '';
+    const list = this.shadowRoot.querySelector('ul')
+    this.clearChatList()
     this.chatList.forEach(chat => list.appendChild(document.createElement('li').appendChild(chat)));
   }
 

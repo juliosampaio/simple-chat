@@ -1,6 +1,6 @@
 import { AbstractComponent } from '../../base/abstract.component';
 import ChatPreviewComponentTemplate from './chat-preview.template.html';
-import { updates } from '../../../decorators/updates';
+import { Updates } from '../../../decorators/updates.decorator';
 import { AvatarComponent } from '../../avatar/avatar.component';
 
 export class ChatPreviewComponent extends AbstractComponent {
@@ -36,18 +36,18 @@ export class ChatPreviewComponent extends AbstractComponent {
     return ChatPreviewComponentTemplate;
   }
 
-  @updates('avatar-url')
+  @Updates('avatar-url')
   updateAvatarUrl(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
     const avatar: AvatarComponent = <AvatarComponent>shadowRoot.querySelector('.avatar').childNodes[1];
     avatar.imgSrc = newValue;
   }
 
-  @updates('title')
+  @Updates('title')
   updateTitle(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
     shadowRoot.querySelector('.title').innerHTML = newValue;
   }
 
-  @updates('preview')
+  @Updates('preview')
   updatePreview(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
     shadowRoot.querySelector('.preview').innerHTML = newValue;
   }

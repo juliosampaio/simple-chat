@@ -1,6 +1,6 @@
 import { AbstractComponent } from '../base/abstract.component';
 import AvatarComponentTemplate from './avatar.template.html';
-import { updates } from '../../decorators/updates';
+import { Updates } from '../../decorators/updates.decorator';
 
 export class AvatarComponent extends AbstractComponent {
   static get observedAttributes() {
@@ -23,13 +23,13 @@ export class AvatarComponent extends AbstractComponent {
     this.setAttribute('alt', alt);
   }
 
-  @updates('img-src')
+  @Updates('img-src')
   updateImageSrc(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
     const img: HTMLImageElement = shadowRoot.querySelector('img');
     img.src = newValue;
   }
 
-  @updates('alt')
+  @Updates('alt')
   updateAlt(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
     const img: HTMLImageElement = shadowRoot.querySelector('img');
     img.alt = newValue;

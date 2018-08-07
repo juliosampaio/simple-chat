@@ -10,9 +10,7 @@ export class ChatListController extends AbstractController<ChatListComponent> {
         .getActiveChats()
         .subscribe((chats) => {
           chats.forEach(chat => {
-            const preview = new ChatPreviewComponent();
-            this.view.messages.push(preview)
-            this.view.renderChatList()
+            const preview = this.view.appendChat()
             preview.title = chat.title;
             preview.avatarUrl = chat.avatar;
             preview.preview = chat.lastMessage.body

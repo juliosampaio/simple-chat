@@ -1,6 +1,6 @@
 import { AbstractComponent } from '../base/abstract.component';
 import MessageTemplate from './message.template.html';
-import { updates } from '../../decorators/updates';
+import { Updates } from '../../decorators/updates.decorator';
 import 'reflect-metadata';
 
 export class MessageComponent extends AbstractComponent {
@@ -20,7 +20,7 @@ export class MessageComponent extends AbstractComponent {
     return MessageTemplate;
   }
 
-  @updates('text')
+  @Updates('text')
   updateText(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
     shadowRoot.querySelector('.body').innerHTML = newValue;
   }
