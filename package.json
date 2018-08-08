@@ -7,10 +7,12 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server && webpack --watch"
+    "start": "webpack-dev-server && webpack --watch",
+    "cy:dev": "cypress run"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.5.2",
+    "cypress": "^3.0.3",
     "html-loader": "^0.5.5",
     "reflect-metadata": "^0.1.12",
     "ts-loader": "^4.4.2",
