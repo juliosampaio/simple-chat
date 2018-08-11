@@ -30,7 +30,7 @@ export class MemoryChatService implements IChatService {
 
     const chats = new Subject<IChat[]>();
 
-    // setInterval(() => chats.next([chat]), 5000);
+    setTimeout(() => chats.next([chat, chat]), 1000);
 
     return from(chats);
   }

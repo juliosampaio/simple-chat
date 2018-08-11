@@ -7,9 +7,11 @@ import { Inject } from '../decorators/inject.decorator';
 
 @Inject
 export class ChatListController extends AbstractController<ChatListComponent> {
-  @Bind(MemoryChatService) service: IChatService;
+  @Bind(MemoryChatService)
+  service: IChatService;
 
   init(): void {
+    this.view.addEventListener(ChatListComponent.EVENTS.CHAT_ACTIVE, (a: CustomEvent) => {});
     this.view.addEventListener('connected', () => {
       this.service.getActiveChats().subscribe(chats => {
         chats.forEach(chat => {

@@ -4,6 +4,16 @@ import { Updates } from '../../../decorators/updates.decorator';
 import { AvatarComponent } from '../../avatar/avatar.component';
 
 export class ChatPreviewComponent extends AbstractComponent {
+  set active(value) {
+    value = Boolean(value);
+    if (value) this.setAttribute('active', '');
+    else this.removeAttribute('active');
+  }
+
+  get active(): boolean {
+    return this.hasAttribute('active');
+  }
+
   get avatarUrl(): string {
     return this.getAttribute('avatar-url');
   }
@@ -38,7 +48,9 @@ export class ChatPreviewComponent extends AbstractComponent {
 
   @Updates('avatar-url')
   updateAvatarUrl(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
-    const avatar: AvatarComponent = <AvatarComponent>shadowRoot.querySelector('.avatar').childNodes[1];
+    const avatar: AvatarComponent = <AvatarComponent>(
+      shadowRoot.querySelector('.avatar').childNodes[1]
+    );
     avatar.imgSrc = newValue;
   }
 

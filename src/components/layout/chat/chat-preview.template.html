@@ -1,50 +1,59 @@
 <style>
-    .wrapper {
-        width: 100%;
-        height: 72px;
-        display: flex;
-        cursor: pointer;
-    }
+  :host {
+    --default-active-color: #e9ebeb;
+    display: flex;
+  }
 
-    .avatar {
-        display: flex;
-        flex: 0 0 20%;
-        padding: 0 15px 0 13px;
-        align-items: center;
-        justify-content: center;
-    }
+  :host([active]) {
+    background: var(--active-color, var(--default-active-color));
+  }
 
-    .content {
-        display: flex;
-        flex: 0 1 80%;
-        margin-top: 15px;
-        flex-direction: column;
-        overflow: hidden;
-        border-bottom: 1px solid #f2f2f2;
-    }
+  .wrapper {
+    width: 100%;
+    height: 72px;
+    display: flex;
+    cursor: pointer;
+  }
 
-    .title {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
+  .avatar {
+    display: flex;
+    flex: 0 0 20%;
+    padding: 0 15px 0 13px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content {
+    display: flex;
+    flex: 0 1 80%;
+    margin-top: 15px;
+    flex-direction: column;
+    overflow: hidden;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  .title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 
 
-    .preview {
-        font-size: 14px;
-        margin-top: 2px;
-        color: rgba(0, 0, 0, 0.6);
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
+  .preview {
+    font-size: 14px;
+    margin-top: 2px;
+    color: rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 </style>
 <div class="wrapper">
-    <div class="avatar">
-        <app-avatar img-src="" alt=""></app-avatar>
-    </div>
-    <div class="content">
-        <div class="title"></div>
-        <div class="preview"></div>
-    </div>
+  <div class="avatar">
+    <app-avatar img-src="" alt=""></app-avatar>
+  </div>
+  <div class="content">
+    <div class="title"></div>
+    <div class="preview"></div>
+  </div>
 </div>
