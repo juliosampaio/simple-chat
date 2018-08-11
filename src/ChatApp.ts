@@ -1,10 +1,10 @@
 import { IBaseComponent } from './components/base/base.component';
 import { MessageComponent } from './components/message/message.component';
 import { AbstractComponent } from './components/base/abstract.component';
-import { LayoutComponent } from './components/layout/layout.component';
-import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
-import { ChatListComponent } from './components/layout/chat-list/chat-list.component';
-import { ChatPreviewComponent } from './components/layout/chat/chat-preview.component';
+import { AppComponent } from './components/app/app.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
+import { ChatPreviewComponent } from './components/chat/chat-preview.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 
 interface ICustomComponent {
@@ -12,10 +12,10 @@ interface ICustomComponent {
   tag: string;
 }
 
-export class App {
+export class ChatApp {
   private customComponents: Array<ICustomComponent> = [
     { component: MessageComponent, tag: 'message' },
-    { component: LayoutComponent, tag: 'layout' },
+    { component: AppComponent, tag: 'layout' },
     { component: SidebarComponent, tag: 'sidebar' },
     { component: ChatListComponent, tag: 'chat-list' },
     { component: ChatPreviewComponent, tag: 'chat-preview' },

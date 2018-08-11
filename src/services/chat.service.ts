@@ -14,7 +14,7 @@ export class MemoryChatService implements IChatService {
 
     const message: IMessage = {
       id: '1',
-      body: 'Hey',
+      body: 'Hey 😅',
       isRead: false,
       sentAt: new Date(),
       chat: { id: '1' },

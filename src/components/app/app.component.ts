@@ -1,10 +1,10 @@
 import { AbstractComponent } from '../base/abstract.component';
-import LayoutTemplate from './layout.template.html';
-import { ChatListComponent } from './chat-list/chat-list.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import AppTemplate from './app.template.html';
+import { ChatListComponent } from '../chat-list/chat-list.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ChatListController } from '../../controllers/chat-list.controller';
 
-export class LayoutComponent extends AbstractComponent {
+export class AppComponent extends AbstractComponent {
   constructor() {
     super();
   }
@@ -19,6 +19,6 @@ export class LayoutComponent extends AbstractComponent {
   }
 
   getTemplate(): string {
-    return LayoutTemplate;
+    return AppTemplate;
   }
 }

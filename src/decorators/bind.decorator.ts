@@ -1,4 +1,3 @@
-import { Injector } from '../utils/injector.util';
 /**
  * Registers the constructor to be injected into the property value when a new
  * instance is created for classes using the @Inject decorator

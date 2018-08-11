@@ -1,7 +1,7 @@
-import { AbstractComponent } from '../../base/abstract.component';
+import { AbstractComponent } from '../base/abstract.component';
 import ChatPreviewComponentTemplate from './chat-preview.template.html';
-import { Updates } from '../../../decorators/updates.decorator';
-import { AvatarComponent } from '../../avatar/avatar.component';
+import { Updates } from '../../decorators/updates.decorator';
+import { AvatarComponent } from '../avatar/avatar.component';
 
 export class ChatPreviewComponent extends AbstractComponent {
   set active(value) {

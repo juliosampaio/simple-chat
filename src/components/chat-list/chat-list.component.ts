@@ -1,4 +1,4 @@
-import { AbstractComponent } from '../../base/abstract.component';
+import { AbstractComponent } from '../base/abstract.component';
 import ChatListComponentTemplate from './chat-list.template.html';
 import { ChatPreviewComponent } from '../chat/chat-preview.component';
 

@@ -1,5 +1,5 @@
-import { App } from './app';
+import { ChatApp } from './ChatApp';
 
-const appInstance = new App('app');
+const appInstance = new ChatApp('app');
 
 appInstance.defineComponents();

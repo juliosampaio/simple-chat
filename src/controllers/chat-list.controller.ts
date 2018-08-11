@@ -1,5 +1,5 @@
 import { AbstractController } from './abstract.controller';
-import { ChatListComponent } from '../components/layout/chat-list/chat-list.component';
+import { ChatListComponent } from '../components/chat-list/chat-list.component';
 import { MemoryChatService } from '../services/chat.service';
 import { IChatService } from '../services/base.service';
 import { Bind } from '../decorators/bind.decorator';
