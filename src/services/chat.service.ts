@@ -4,9 +4,7 @@ import { IChatService } from './base.service';
 import { IChat } from '../models/IChat';
 import { IMessage } from '../models/IMessage';
 import { IUser } from '../models/IUser';
-import { Service } from '../decorators/service.decorator';
 
-@Service
 export class MemoryChatService implements IChatService {
   getActiveChats(): Observable<IChat[]> {
     const ricky: IUser = {
@@ -32,13 +30,12 @@ export class MemoryChatService implements IChatService {
 
     const chats = new Subject<IChat[]>();
 
-    setInterval(() => chats.next([chat]), 5000);
+    // setInterval(() => chats.next([chat]), 5000);
 
     return from(chats);
   }
 }
 
-@Service
 export class LocalStorageChatService implements IChatService {
   getActiveChats(): Observable<IChat[]> {
     return null;
