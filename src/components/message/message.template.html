@@ -1,63 +1,65 @@
 <style>
-    :host {
-        --default-sent-color: #dcf8c6;
-        --default-received-color: #ffffff;
-        --default-time-color: rgba(0, 0, 0, 0.45);
-        --default-body-color: #262626;
-        display: block;
-        padding: 6px 7px 8px 9px;
-        position: relative;
-        border-radius: 7px;
-        box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
-    }
+  :host {
+    --default-sent-color: #dcf8c6;
+    --default-received-color: #ffffff;
+    --default-time-color: rgba(0, 0, 0, 0.45);
+    --default-body-color: #262626;
+    display: inline-block;
+    padding: 6px 7px 8px 9px;
+    position: relative;
+    border-radius: 7px;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+  }
 
-    :host([type="sent"]) {
-        border-top-right-radius: 0px;
-        background-color: var(--sent-color, var(--default-sent-color));
-    }
+  :host([type="sent"]) {
+    border-top-right-radius: 0px;
+    background-color: var(--sent-color, var(--default-sent-color));
+    align-self: flex-end;
+  }
 
-    :host([type="received"]) {
-        border-top-left-radius: 0px;
-        background-color: var(--received-color, var(--default-received-color));
-    }
+  :host([type="received"]) {
+    border-top-left-radius: 0px;
+    background-color: var(--received-color, var(--default-received-color));
+    align-self: flex-start;
+  }
 
-    :host([type="received"]) .tail {
-        left: -10px;
-        width: 0;
-        height: 0;
-        border-top: 0px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-right: 10px solid var(--received-color, var(--default-received-color));
+  :host([type="received"]) .tail {
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 0px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid var(--received-color, var(--default-received-color));
 
-    }
+  }
 
-    :host([type="sent"]) .tail {
-        right: -10px;
-        width: 0;
-        height: 0;
-        border-top: 0px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: 10px solid var(--sent-color, var(--default-sent-color));
-    }
+  :host([type="sent"]) .tail {
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-top: 0px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid var(--sent-color, var(--default-sent-color));
+  }
 
-    .tail {
-        position: absolute;
-        top: 0;
-    }
+  .tail {
+    position: absolute;
+    top: 0;
+  }
 
-    .body {
-        color: var(--body-color, var(--default-body-color));
-    }
+  .body {
+    color: var(--body-color, var(--default-body-color));
+  }
 
-    .time {
-        text-align: right;
-        font-size: 13px;
-        color: var(--time-color, var(--default-time-color));
-    }
+  .time {
+    text-align: right;
+    font-size: 13px;
+    color: var(--time-color, var(--default-time-color));
+  }
 </style>
 
 <div class="tail"></div>
 <div class="message">
-    <div class="body"></div>
-    <div class="time">12:49</div>
+  <div class="body"></div>
+  <div class="time">12:49</div>
 </div>

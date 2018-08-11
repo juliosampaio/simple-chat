@@ -4,7 +4,7 @@ import { Updates } from '../../decorators/updates.decorator';
 
 export class AvatarComponent extends AbstractComponent {
   static get observedAttributes() {
-    return ['img-src', 'alt'];
+    return ['img-src', 'alt', 'width', 'height'];
   }
 
   get imgSrc(): string {
@@ -23,6 +23,22 @@ export class AvatarComponent extends AbstractComponent {
     this.setAttribute('alt', alt);
   }
 
+  get width(): string {
+    return this.getAttribute('width');
+  }
+
+  set width(width: string) {
+    this.setAttribute('width', width);
+  }
+
+  get height(): string {
+    return this.getAttribute('height');
+  }
+
+  set height(height: string) {
+    this.setAttribute('height', height);
+  }
+
   @Updates('img-src')
   updateImageSrc(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
     const img: HTMLImageElement = shadowRoot.querySelector('img');
@@ -33,6 +49,20 @@ export class AvatarComponent extends AbstractComponent {
   updateAlt(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
     const img: HTMLImageElement = shadowRoot.querySelector('img');
     img.alt = newValue;
+  }
+
+  @Updates('width')
+  updateWidth(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
+    const wrapper: HTMLElement = shadowRoot.querySelector('.wrapper');
+    wrapper.style.width = `${newValue}px`;
+    shadowRoot.querySelector('img').width = newValue;
+  }
+
+  @Updates('height')
+  updateHeight(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
+    const wrapper: HTMLElement = shadowRoot.querySelector('.wrapper');
+    wrapper.style.height = `${newValue}px`;
+    shadowRoot.querySelector('img').height = newValue;
   }
 
   getTemplate(): string {

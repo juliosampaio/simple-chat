@@ -1,6 +1,6 @@
 import { AbstractComponent } from '../base/abstract.component';
 import ChatListComponentTemplate from './chat-list.template.html';
-import { ChatPreviewComponent } from '../chat/chat-preview.component';
+import { ChatPreviewComponent } from '../chat-preview/chat-preview.component';
 
 const EVENTS = {
   CHAT_ACTIVE: 'CHAT_ACTIVE',

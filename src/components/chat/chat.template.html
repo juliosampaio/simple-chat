@@ -1,0 +1,70 @@
+<style>
+  :host {
+    display: flex;
+    --default-header-bg-color: #eeeeee;
+    --default-header-separator-color: #e0e0e0;
+    --default-content-bg-color: #e1d8cf;
+  }
+
+  main {
+    display: flex;
+    height: auto;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .header {
+    display: flex;
+    height: 59px;
+    align-items: center;
+    padding: 0px 10px;
+    background-color: var(--header-bg-color, var(--default-header-bg-color));
+    border-left: 1px solid var(--header-separator-color, var(--default-header-separator-color));
+  }
+
+  .header h1 {
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+    padding-left: 15px;
+  }
+
+  article {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    background-color: var(--content-bg-color, var(--default-content-bg-color));
+    padding-top: 5px;
+  }
+
+  article section {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer {
+    display: flex;
+    border: 1px solid gold;
+    min-height: 62px;
+    width: 100%;
+  }
+</style>
+
+<main>
+  <div class="header">
+    <app-avatar width="40" height="40" img-src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"></app-avatar>
+    <h1>Title</h1>
+  </div>
+  <article>
+    <section>
+      <app-message text="hey" type="received"></app-message>
+    </section>
+    <section>
+      <app-message text="hey, sup?" type="sent"></app-message>
+    </section>
+  </article>
+  <div class="footer"></div>
+</main>

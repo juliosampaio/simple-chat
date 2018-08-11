@@ -1,11 +1,11 @@
 import { IBaseComponent } from './components/base/base.component';
 import { MessageComponent } from './components/message/message.component';
-import { AbstractComponent } from './components/base/abstract.component';
 import { AppComponent } from './components/app/app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ChatListComponent } from './components/chat-list/chat-list.component';
-import { ChatPreviewComponent } from './components/chat/chat-preview.component';
+import { ChatPreviewComponent } from './components/chat-preview/chat-preview.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 interface ICustomComponent {
   component: new () => IBaseComponent;
@@ -17,6 +17,7 @@ export class ChatApp {
     { component: MessageComponent, tag: 'message' },
     { component: AppComponent, tag: 'layout' },
     { component: SidebarComponent, tag: 'sidebar' },
+    { component: ChatComponent, tag: 'chat' },
     { component: ChatListComponent, tag: 'chat-list' },
     { component: ChatPreviewComponent, tag: 'chat-preview' },
     { component: AvatarComponent, tag: 'avatar' },
