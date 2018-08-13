@@ -8,6 +8,7 @@ import { AvatarComponent } from './components/avatar/avatar.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ChatListController } from './controllers/chat-list.controller';
 import { ChatController } from './controllers/chat.controller';
+import { SidebarHeaderComponent } from './components/sidebar/sidebar-header.component';
 
 interface ICustomComponent {
   component: new () => IBaseComponent;
@@ -23,6 +24,7 @@ export class ChatApp {
     { component: ChatListComponent, tag: 'chat-list' },
     { component: ChatPreviewComponent, tag: 'chat-preview' },
     { component: AvatarComponent, tag: 'avatar' },
+    { component: SidebarHeaderComponent, tag: 'sidebar-header' },
   ];
 
   constructor(private namespace: string) {}
