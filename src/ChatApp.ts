@@ -6,6 +6,8 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { ChatPreviewComponent } from './components/chat-preview/chat-preview.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { ChatListController } from './controllers/chat-list.controller';
+import { ChatController } from './controllers/chat.controller';
 
 interface ICustomComponent {
   component: new () => IBaseComponent;
@@ -25,11 +27,25 @@ export class ChatApp {
 
   constructor(private namespace: string) {}
 
+  addEvents() {}
+
+  bindControllers() {
+    const appLayout: AppComponent = document.querySelector('app-layout');
+    new ChatListController(appLayout.chatList).init();
+    new ChatController(appLayout.chat).init();
+  }
+
   defineComponents() {
     this.customComponents.map(({ component, tag }) => {
       if (!window.customElements.get(tag)) {
         window.customElements.define(`${this.namespace}-${tag}`, component);
       }
     });
+  }
+
+  init() {
+    this.defineComponents();
+    this.bindControllers();
+    this.addEvents();
   }
 }

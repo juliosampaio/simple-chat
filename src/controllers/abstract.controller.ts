@@ -5,7 +5,6 @@ export abstract class AbstractController<T extends IBaseComponent> implements IB
   public view: T;
   constructor(view: T) {
     this.view = view;
-    this.init();
   }
   abstract init(): void;
 }

@@ -1,4 +1,8 @@
-import { IBaseComponent, AttributeChangeListenerCallback, AttributeChangeListener } from './base.component';
+import {
+  IBaseComponent,
+  AttributeChangeListenerCallback,
+  AttributeChangeListener,
+} from './base.component';
 
 export abstract class AbstractComponent extends HTMLElement implements IBaseComponent {
   constructor(shadhowRootInit: ShadowRootInit = { mode: 'open' }) {
@@ -15,7 +19,9 @@ export abstract class AbstractComponent extends HTMLElement implements IBaseComp
   }
 
   getAttributeChangeListenerFor(propertyName: string): AttributeChangeListenerCallback {
-    const listener = this.getAttributeChangeListeners().filter(item => item.property === propertyName)[0];
+    const listener = this.getAttributeChangeListeners().filter(
+      item => item.property === propertyName,
+    )[0];
     return listener && listener.callback;
   }
 

@@ -5,7 +5,7 @@ import 'reflect-metadata';
 
 export class MessageComponent extends AbstractComponent {
   static get observedAttributes() {
-    return ['text'];
+    return ['text', 'time', 'type'];
   }
 
   get text(): string {
@@ -16,6 +16,22 @@ export class MessageComponent extends AbstractComponent {
     this.setAttribute('text', text);
   }
 
+  get time(): string {
+    return this.getAttribute('time');
+  }
+
+  set time(time: string) {
+    this.setAttribute('time', time);
+  }
+
+  get type(): string {
+    return this.getAttribute('type');
+  }
+
+  set type(type: string) {
+    this.setAttribute('type', type);
+  }
+
   getTemplate(): string {
     return MessageTemplate;
   }
@@ -23,5 +39,10 @@ export class MessageComponent extends AbstractComponent {
   @Updates('text')
   updateText(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
     shadowRoot.querySelector('.body').innerHTML = newValue;
+  }
+
+  @Updates('time')
+  updateTime(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
+    shadowRoot.querySelector('.time').innerHTML = newValue;
   }
 }

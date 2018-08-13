@@ -44,7 +44,7 @@ export class ChatListComponent extends AbstractComponent {
     this.chatList.forEach(chat => list.appendChild(document.createElement('li').appendChild(chat)));
   }
 
-  addSelectChatEvent(chat: ChatPreviewComponent) {
+  private addSelectChatEvent(chat: ChatPreviewComponent) {
     return () => {
       this.shadowRoot
         .querySelectorAll('ul app-chat-preview')

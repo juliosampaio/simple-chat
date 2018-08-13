@@ -5,7 +5,7 @@
  * @see Bind
  */
 export const Inject = <T extends { new (...args: any[]): {} }>(constructor: T) => {
-  const injections = Reflect.getMetadata('injections', constructor);
+  const injections = Reflect.getMetadata('injections', constructor) || {};
   const instances = Object.keys(injections).map(key => new injections[key].constructor());
   const originalConstructor = constructor;
 

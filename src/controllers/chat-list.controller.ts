@@ -12,14 +12,13 @@ export class ChatListController extends AbstractController<ChatListComponent> {
 
   init(): void {
     this.view.addEventListener(ChatListComponent.EVENTS.CHAT_ACTIVE, (a: CustomEvent) => {});
-    this.view.addEventListener('connected', () => {
-      this.service.getActiveChats().subscribe(chats => {
-        chats.forEach(chat => {
-          const preview = this.view.appendChat();
-          preview.title = chat.title;
-          preview.avatarUrl = chat.avatar;
-          preview.preview = chat.lastMessage.body;
-        });
+    this.service.getActiveChats().subscribe(chats => {
+      chats.forEach(chat => {
+        const preview = this.view.appendChat();
+        preview.id = chat.id;
+        preview.title = chat.title;
+        preview.avatarUrl = chat.avatar;
+        preview.preview = chat.lastMessage.body;
       });
     });
   }

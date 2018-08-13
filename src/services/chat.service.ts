@@ -8,8 +8,13 @@ import { IUser } from '../models/IUser';
 export class MemoryChatService implements IChatService {
   getActiveChats(): Observable<IChat[]> {
     const ricky: IUser = {
-      name: 'Ricky',
+      name: 'Rick',
       avatar: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+    };
+
+    const morty: IUser = {
+      name: 'Morty',
+      avatar: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
     };
 
     const message: IMessage = {
@@ -21,6 +26,15 @@ export class MemoryChatService implements IChatService {
       sender: ricky,
     };
 
+    const message2: IMessage = {
+      id: '2',
+      body: 'Sup dude?',
+      isRead: false,
+      sentAt: new Date(),
+      chat: { id: '2' },
+      sender: morty,
+    };
+
     const chat: IChat = {
       id: '1',
       avatar: message.sender.avatar,
@@ -28,9 +42,16 @@ export class MemoryChatService implements IChatService {
       lastMessage: message,
     };
 
+    const chat2: IChat = {
+      id: '2',
+      avatar: message2.sender.avatar,
+      title: message2.sender.name,
+      lastMessage: message2,
+    };
+
     const chats = new Subject<IChat[]>();
 
-    setTimeout(() => chats.next([chat, chat]), 1000);
+    setTimeout(() => chats.next([chat, chat2]), 1000);
 
     return from(chats);
   }
