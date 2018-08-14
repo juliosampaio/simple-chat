@@ -1,17 +1,17 @@
 import 'reflect-metadata';
 import { Inject } from './inject.decorator';
-import { IChat } from '../models/IChat';
-import { MemoryChatService, LocalStorageChatService } from '../services/chat.service';
+import { MemoryChatService } from '../services/memory-chat.service';
 import { Bind } from './bind.decorator';
+import { LocalStorageChatService } from '../services/local-storage-chat.service';
 import { IChatService } from '../services/base.service';
 
 describe('Inject decorator', () => {
   @Inject
   class SimpleClass {
     @Bind(MemoryChatService)
-    memberX: IChat;
+    memberX: IChatService;
     @Bind(LocalStorageChatService)
-    memberY: IChat;
+    memberY: IChatService;
   }
   it('should keep instance with the same Type despite its constructor was overridden by @Inject', () => {
     const instance = new SimpleClass();

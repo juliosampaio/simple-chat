@@ -3,10 +3,12 @@ import AppTemplate from './app.template.html';
 import { ChatListComponent } from '../chat-list/chat-list.component';
 import { ChatComponent } from '../chat/chat.component';
 import { ChatPreviewComponent } from '../chat-preview/chat-preview.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 export class AppComponent extends AbstractComponent {
   chatList: ChatListComponent;
   chat: ChatComponent;
+  sidebar: SidebarComponent;
 
   constructor() {
     super();
@@ -27,6 +29,7 @@ export class AppComponent extends AbstractComponent {
   bindComponents() {
     this.chatList = this.shadowRoot.querySelector('app-chat-list');
     this.chat = this.shadowRoot.querySelector('app-chat');
+    this.sidebar = this.shadowRoot.querySelector('app-sidebar');
   }
 
   connectedCallback() {

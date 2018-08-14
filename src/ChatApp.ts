@@ -9,6 +9,8 @@ import { ChatComponent } from './components/chat/chat.component';
 import { ChatListController } from './controllers/chat-list.controller';
 import { ChatController } from './controllers/chat.controller';
 import { SidebarHeaderComponent } from './components/sidebar/sidebar-header.component';
+import { ScaledroneChatService } from './services/scaledrone-chat.service';
+import { SidebarController } from './controllers/sidebar.controller';
 
 interface ICustomComponent {
   component: new () => IBaseComponent;
@@ -33,8 +35,16 @@ export class ChatApp {
 
   bindControllers() {
     const appLayout: AppComponent = document.querySelector('app-layout');
+    new SidebarController(appLayout.sidebar).init();
     new ChatListController(appLayout.chatList).init();
     new ChatController(appLayout.chat).init();
+  }
+
+  connectServer() {
+    const chatService = new ScaledroneChatService();
+    chatService.connect().subscribe(() => {
+      this.bindControllers();
+    });
   }
 
   defineComponents() {
@@ -47,7 +57,7 @@ export class ChatApp {
 
   init() {
     this.defineComponents();
-    this.bindControllers();
+    this.connectServer();
     this.addEvents();
   }
 }

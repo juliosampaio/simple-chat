@@ -55,10 +55,11 @@ export class MemoryChatService implements IChatService {
 
     return from(chats);
   }
-}
 
-export class LocalStorageChatService implements IChatService {
-  getActiveChats(): Observable<IChat[]> {
+  connect(): Observable<boolean> {
+    return null;
+  }
+  getUser(): IUser {
     return null;
   }
 }

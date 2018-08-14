@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { IChat } from '../models/IChat';
 import { Bind } from './bind.decorator';
-import { MemoryChatService } from '../services/chat.service';
+import { MemoryChatService } from '../services/memory-chat.service';
 
 describe('Bind decorator', () => {
   class A {
