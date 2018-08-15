@@ -63,7 +63,12 @@ export class ChatComponent extends AbstractComponent {
     });
   }
 
-  appendMessage(text: string, type: 'received' | 'sent', time: string = ''): MessageComponent {
+  appendMessage(
+    text: string,
+    type: 'received' | 'sent',
+    sender = '',
+    time: string = '',
+  ): MessageComponent {
     const list = this.shadowRoot.querySelector('.body article');
     const message = list
       .appendChild(document.createElement('section'))
@@ -72,6 +77,7 @@ export class ChatComponent extends AbstractComponent {
     message.text = text;
     message.type = type;
     message.time = time || `${now.getHours()}:${now.getMinutes()}`;
+    message.sender = sender;
     message.scrollIntoView();
     return message;
   }

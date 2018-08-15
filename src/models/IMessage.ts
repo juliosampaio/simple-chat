@@ -2,10 +2,10 @@ import { IUser } from './IUser';
 import { IChat } from './IChat';
 
 export interface IMessage {
-  id: string;
+  id?: string;
   sender: IUser;
   body: string;
-  isRead: boolean;
+  isRead?: boolean;
   sentAt: Date;
-  chat: IChat
+  chat?: IChat;
 }

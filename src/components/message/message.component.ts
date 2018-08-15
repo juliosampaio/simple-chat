@@ -5,7 +5,15 @@ import 'reflect-metadata';
 
 export class MessageComponent extends AbstractComponent {
   static get observedAttributes() {
-    return ['text', 'time', 'type'];
+    return ['sender', 'text', 'time', 'type'];
+  }
+
+  get sender(): string {
+    return this.getAttribute('sender');
+  }
+
+  set sender(sender: string) {
+    this.setAttribute('sender', sender);
   }
 
   get text(): string {
@@ -38,11 +46,16 @@ export class MessageComponent extends AbstractComponent {
 
   @Updates('text')
   updateText(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
-    shadowRoot.querySelector('.body').innerHTML = newValue;
+    shadowRoot.querySelector('.body .text').innerHTML = newValue;
   }
 
   @Updates('time')
   updateTime(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
     shadowRoot.querySelector('.time').innerHTML = newValue;
+  }
+
+  @Updates('sender')
+  updateSender(oldValue: any, newValue: any, shadowRoot: ShadowRoot) {
+    shadowRoot.querySelector('.body .sender').innerHTML = newValue;
   }
 }

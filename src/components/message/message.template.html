@@ -50,6 +50,17 @@
   .body {
     color: var(--body-color, var(--default-body-color));
     font-size: 13px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  :host([type="sent"]) .sender {
+    display: none;
+  }
+
+  .sender {
+    font-weight: bold;
+    padding-bottom: 3px;
   }
 
   .time {
@@ -61,6 +72,9 @@
 
 <div class="tail"></div>
 <div class="message">
-  <div class="body"></div>
+  <div class="body">
+    <div class="sender"></div>
+    <div class="text"></div>
+  </div>
   <div class="time"></div>
 </div>

@@ -3,6 +3,7 @@ import { IChatService } from './base.service';
 import { IChat } from '../models/IChat';
 import { IUser } from '../models/IUser';
 import { getRandomCharacter } from '../helpers/rick-and-morty';
+import { IMessage } from '../models/IMessage';
 
 declare const ScaleDrone: any;
 
@@ -17,10 +18,12 @@ export class ScaledroneChatService implements IChatService {
   private static globalRoomName: string = 'observable-rick-and-morty';
   private static activeChats: IChat[] = [];
   private static chatsSubject = new Subject<IChat[]>();
+  private static messageSubject = new Subject<IMessage>();
   private static server: any;
 
   private addServerListeners(room: any) {
     ScaledroneChatService.globalRoom = room;
+    this.onData(room);
     this.onMembers(room);
     this.onMemberJoin(room);
     this.onMemberLeave(room);
@@ -57,12 +60,24 @@ export class ScaledroneChatService implements IChatService {
     return ScaledroneChatService.chatsSubject;
   }
 
+  getMessage(chat: IChat): Observable<IMessage> {
+    return ScaledroneChatService.messageSubject;
+  }
+
   getUser(): IUser {
     if (ScaledroneChatService.user) {
-      return ScaledroneChatService.user;
+      const user = ScaledroneChatService.user;
+      user.id = ScaledroneChatService.server.clientId;
+      return user;
     }
     ScaledroneChatService.user = getRandomCharacter();
     return ScaledroneChatService.user;
+  }
+
+  onData(room: any) {
+    room.on('data', (data: any) => {
+      ScaledroneChatService.messageSubject.next(data);
+    });
   }
 
   onMembers(room: any) {
@@ -98,6 +113,15 @@ export class ScaledroneChatService implements IChatService {
       const index = activeChats.findIndex(member => member.id === id);
       activeChats.splice(index, 1);
       ScaledroneChatService.chatsSubject.next(activeChats);
+    });
+  }
+
+  sendMessage(message: IMessage) {
+    const server = ScaledroneChatService.server;
+    const room = ScaledroneChatService.globalRoomName;
+    server.publish({
+      room,
+      message,
     });
   }
 }

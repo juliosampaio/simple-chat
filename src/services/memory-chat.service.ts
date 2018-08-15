@@ -62,4 +62,9 @@ export class MemoryChatService implements IChatService {
   getUser(): IUser {
     return null;
   }
+  sendMessage(message: IMessage) {}
+
+  getMessage(chat: IChat): Observable<IMessage> {
+    throw new Error('Method not implemented.');
+  }
 }
