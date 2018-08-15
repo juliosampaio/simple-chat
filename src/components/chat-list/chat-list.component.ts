@@ -28,8 +28,8 @@ export class ChatListComponent extends AbstractComponent {
     const child = this.shadowRoot
       .querySelector('ul')
       .appendChild(document.createElement('li').appendChild(chat || new ChatPreviewComponent()));
-
-    child.addEventListener('click', this.addSelectChatEvent(child));
+    // TODO: implement private chat feature
+    //child.addEventListener('click', this.addSelectChatEvent(child));
 
     return child;
   }

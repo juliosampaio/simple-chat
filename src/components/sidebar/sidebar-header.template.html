@@ -15,16 +15,18 @@
     display: block;
   }
 
-  .theme {
-    width: 40px;
+  .title {
+    padding-left: 13px;
     height: 20px;
-    border: 1px solid black;
     display: block;
+    max-width: 160px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 </style>
 
 <div class="wrapper">
   <app-avatar width="40" height="40" img-src="" alt=""></app-avatar>
-  <div class="theme light"></div>
-  <div class="theme dark"></div>
+  <div class="title"></div>
 </div>

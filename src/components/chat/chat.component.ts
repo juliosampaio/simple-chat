@@ -11,6 +11,7 @@ const EVENTS = {
 
 export class ChatComponent extends AbstractComponent {
   static EVENTS = EVENTS;
+  emptyMessage: string = '<div><br></div><div><br></div>';
 
   set avatar(avatar: string) {
     this.setAttribute('avatar', avatar);
@@ -50,6 +51,10 @@ export class ChatComponent extends AbstractComponent {
     const placeholder = this.shadowRoot.querySelector('.placeholder');
     textarea.addEventListener('keyup', (e: KeyboardEvent) => {
       if (e.keyCode === 13) {
+        if (textarea.innerHTML === this.emptyMessage) {
+          textarea.innerHTML = '';
+          return;
+        }
         const messageBody = textarea.innerHTML;
         const msgComponent = this.appendMessage(messageBody, 'sent');
         this.dispatchNewMessage(messageBody, msgComponent);

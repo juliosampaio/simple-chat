@@ -17,6 +17,8 @@ export class SidebarController extends AbstractController<SidebarComponent> {
 
   updateHeader() {
     const header: SidebarHeaderComponent = this.view.querySelector('app-sidebar-header');
-    header.avatar = this.chatService.getUser().avatar;
+    const user = this.chatService.getUser();
+    header.avatar = user.avatar;
+    header.title = user.name;
   }
 }
