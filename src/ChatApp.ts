@@ -11,12 +11,17 @@ import { ChatController } from './controllers/chat.controller';
 import { SidebarHeaderComponent } from './components/sidebar/sidebar-header.component';
 import { ScaledroneChatService } from './services/scaledrone-chat.service';
 import { SidebarController } from './controllers/sidebar.controller';
+import { IChatService } from './services/base.service';
+import { Bind } from './decorators/bind.decorator';
+import { Inject } from './decorators/inject.decorator';
+import { reject } from '../node_modules/@types/bluebird';
 
 interface ICustomComponent {
   component: new () => IBaseComponent;
   tag: string;
 }
 
+@Inject
 export class ChatApp {
   private customComponents: Array<ICustomComponent> = [
     { component: MessageComponent, tag: 'message' },
@@ -29,9 +34,10 @@ export class ChatApp {
     { component: SidebarHeaderComponent, tag: 'sidebar-header' },
   ];
 
-  constructor(private namespace: string) {}
+  @Bind(ScaledroneChatService)
+  private chatService: IChatService;
 
-  addEvents() {}
+  constructor(private namespace: string) {}
 
   bindControllers() {
     const appLayout: AppComponent = document.querySelector('app-layout');
@@ -40,10 +46,15 @@ export class ChatApp {
     new ChatController(appLayout.chat).init();
   }
 
-  connectServer() {
-    const chatService = new ScaledroneChatService();
-    chatService.connect().subscribe(() => {
-      this.bindControllers();
+  connectServer(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.chatService.connect().subscribe(isConnected => {
+        if (isConnected) {
+          resolve(true);
+        } else {
+          reject(false);
+        }
+      });
     });
   }
 
@@ -56,8 +67,16 @@ export class ChatApp {
   }
 
   init() {
-    this.defineComponents();
-    this.connectServer();
-    this.addEvents();
+    this.connectServer()
+      .then(() => {
+        this.defineComponents();
+        this.bindControllers();
+        this.hideSpinner();
+      })
+      .catch(console.log);
+  }
+
+  hideSpinner() {
+    document.getElementById('main-loader').style.display = 'none';
   }
 }
