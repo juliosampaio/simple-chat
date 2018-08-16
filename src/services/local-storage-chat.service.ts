@@ -6,15 +6,17 @@ import { IMessage } from '../models/IMessage';
 
 export class LocalStorageChatService implements IChatService {
   getActiveChats(): Observable<IChat[]> {
-    return null;
+    throw new Error('Method not implemented.');
   }
   connect(): Observable<boolean> {
-    return null;
+    throw new Error('Method not implemented.');
   }
   getUser(): IUser {
-    return null;
+    throw new Error('Method not implemented.');
   }
-  sendMessage(message: IMessage) {}
+  sendMessage(message: IMessage) {
+    throw new Error('Method not implemented.');
+  }
 
   getMessage(chat: IChat): Observable<IMessage> {
     throw new Error('Method not implemented.');
