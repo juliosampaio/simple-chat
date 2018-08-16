@@ -39,4 +39,4 @@ jobs:
       - run: yarn build
 
       - deploy:
-          command: yarn surge --project ./dist --domain rick-and-morty-chat.surge.sh
+          command: ./node_modules/surge/lib/cli.js --project --project ./dist --domain rick-and-morty-chat.surge.sh
