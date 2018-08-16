@@ -2,6 +2,12 @@
 
 A simple chat project that aims to be used as playground for various front-end technologies (and also as coding challenges 😅)
 
+Each session creates a user in a global chat room.
+
+View it online [here](http://rick-and-morty-chat.surge.sh/)
+
+![chat](./chat.gif)
+
 ## Used technologies
 
 - [Jest](https://jestjs.io/)
