@@ -14,7 +14,6 @@ import { SidebarController } from './controllers/sidebar.controller';
 import { IChatService } from './services/base.service';
 import { Bind } from './decorators/bind.decorator';
 import { Inject } from './decorators/inject.decorator';
-import { reject } from '../node_modules/@types/bluebird';
 
 interface ICustomComponent {
   component: new () => IBaseComponent;

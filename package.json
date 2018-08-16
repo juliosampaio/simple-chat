@@ -1,7 +1,7 @@
 {
   "name": "simple-chat",
   "version": "0.0.1",
-  "description": "A simple chat for Credita's front end challenge",
+  "description": "A simple chat project that aims to be used as playground for many front-end technologies",
   "main": "index.js",
   "author": "Julio Sampaio <juliodssampaio@gmail.com>",
   "license": "MIT",
@@ -15,7 +15,6 @@
   "devDependencies": {
     "@types/jest": "^23.3.1",
     "copy-webpack-plugin": "^4.5.2",
-    "cypress": "^3.0.3",
     "html-loader": "^0.5.5",
     "jest": "^23.5.0",
     "reflect-metadata": "^0.1.12",
@@ -31,7 +30,8 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.ts?$": "ts-jest"
+      "^.+\\.ts?$": "ts-jest",
+      "^.+\\.html?$": "<rootDir>/src/helpers/htmlLoader.js"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
@@ -42,7 +42,7 @@
       "json",
       "node"
     ],
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "collectCoverageFrom": [
       "src/**/*.ts"
     ]
